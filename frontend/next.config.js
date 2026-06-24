@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   // Compress responses
   compress: true,
   // Remove X-Powered-By header for security
