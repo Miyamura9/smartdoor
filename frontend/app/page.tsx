@@ -52,9 +52,13 @@ export default function HomePage() {
     }
   }, [router]);
 
-  // ── Register service worker ──────────────────────────────────────────────
+  // ── Service Worker for PWA (Web only) ──────────────────────────────────
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+    if (
+      typeof window !== 'undefined' && 
+      'serviceWorker' in navigator && 
+      !(window as any).Capacitor
+    ) {
       navigator.serviceWorker.register('/sw.js').catch(console.error);
     }
   }, []);
