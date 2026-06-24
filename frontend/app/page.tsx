@@ -46,11 +46,7 @@ export default function HomePage() {
   // ── Auth guard ──────────────────────────────────────────────────────────
   useEffect(() => {
     if (!isAuthenticated()) {
-      if (typeof window !== 'undefined' && (window as any).Capacitor) {
-        window.location.href = '/login';
-      } else {
-        router.replace('/login');
-      }
+      router.replace('/login');
     } else {
       setAuthChecked(true);
     }

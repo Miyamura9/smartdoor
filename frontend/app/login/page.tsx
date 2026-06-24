@@ -27,11 +27,7 @@ export default function LoginPage() {
   useEffect(() => {
     // Check if already logged in
     if (isAuthenticated()) {
-      if (typeof window !== 'undefined' && (window as any).Capacitor) {
-        window.location.href = '/';
-      } else {
-        router.replace('/');
-      }
+      router.replace('/');
       return;
     }
     
@@ -66,11 +62,7 @@ export default function LoginPage() {
       const data = await login(username.trim(), password);
       setToken(data.token);
       setUser(data.user);
-      if (typeof window !== 'undefined' && (window as any).Capacitor) {
-        window.location.href = '/';
-      } else {
-        router.replace('/');
-      }
+      router.replace('/');
     } catch (err: unknown) {
       triggerError(err instanceof Error ? err.message : 'Login failed');
     } finally {
@@ -88,11 +80,7 @@ export default function LoginPage() {
       const data = await loginPin(currentPin);
       setToken(data.token);
       setUser(data.user);
-      if (typeof window !== 'undefined' && (window as any).Capacitor) {
-        window.location.href = '/';
-      } else {
-        router.replace('/');
-      }
+      router.replace('/');
     } catch (err: unknown) {
       triggerError(err instanceof Error ? err.message : 'PIN salah');
     } finally {
@@ -138,11 +126,7 @@ export default function LoginPage() {
       const data = await verifyWebAuthnAuth(authResp);
       setToken(data.token);
       setUser(data.user);
-      if (typeof window !== 'undefined' && (window as any).Capacitor) {
-        window.location.href = '/';
-      } else {
-        router.replace('/');
-      }
+      router.replace('/');
     } catch (err: unknown) {
       triggerError(err instanceof Error ? err.message : 'Autentikasi biometrik gagal');
     } finally {
