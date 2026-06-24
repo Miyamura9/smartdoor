@@ -16,6 +16,8 @@ const allowedOrigins = [
   rawFrontendUrl,
   'http://localhost:3000',
   'http://localhost:3001',
+  'http://localhost',
+  'capacitor://localhost',
 ];
 
 console.log('PORT =', process.env.PORT);
