@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model DoorStatus {
+  id        Int      @id @default(autoincrement())
+  status    String   // LOCKED | UNLOCKED
+  source    String   @default("SYSTEM") // REMOTE | RFID | FINGERPRINT | KEYPAD | SYSTEM
+  createdAt DateTime @default(now())
+}
+
+model AccessLog {
+  id        Int      @id @default(autoincrement())
+  method    String   // RFID | FINGERPRINT | KEYPAD | REMOTE
+  status    String   // success | failed
+  uid       String?
+  message   String?
+  createdAt DateTime @default(now())
+}
+
+model WhitelistRFID {
+  id        Int      @id @default(autoincrement())
+  uid       String   @unique
+  label     String?
+  createdAt DateTime @default(now())
+}
+
+model WhitelistPin {
+  id        Int      @id @default(autoincrement())
+  pin       String   @unique
+  label     String?
+  createdAt DateTime @default(now())
+}
