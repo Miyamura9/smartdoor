@@ -1,4 +1,4 @@
-const CACHE_NAME = 'smart-door-lock-v3';
+const CACHE_NAME = 'smart-door-lock-v4';
 const APP_SHELL = ['/', '/manifest.json'];
 
 
